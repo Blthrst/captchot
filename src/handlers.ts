@@ -11,8 +11,7 @@ export async function catchNewChatMember(
 ) {
   if (ctx.message?.new_chat_members) {
     for (const user of ctx.message.new_chat_members) {
-      const first = r.integer(0, 10);
-      const second = r.integer(0, 10);
+      const [first, second] = [r.integer(0, 10), r.integer(0, 10)];
       const result = first + second;
 
       const repliedMsg = await ctx.reply(
