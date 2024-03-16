@@ -1,41 +1,36 @@
-import { Bot, session } from "grammy";
+import { Bot, Context, NextFunction, session } from "grammy";
 import { config } from "./config";
 
-import { SessionData } from "./interfaces";
+import { SessionData, CaptchotContext } from "./types";
+import { catchNewChatMember, checkAnswer } from "./handlers";
 
-const bot = new Bot(config.BOT_TOKEN);
+const bot = new Bot<CaptchotContext>(config.BOT_TOKEN);
 
 function initial(): SessionData {
   return { cache: new Map() };
 }
-bot.use(session({ initial() }));
+
+bot.use(session({ initial }));
 
 bot.command("start", async (ctx) => {
   await ctx.reply("test");
 });
 
-bot.on("message:new_chat_members", async (ctx, next) => {
-  for (const user of ctx.message.new_chat_members) {
-    ctx.reply(
-      `Hello, ${
-        "@" + user.username ?? user.first_name
-      }\nYou have 60 seconds to click the button or you'll be banned`, {
-        reply_markup: {
-            inline_keyboard: [
-                [{text: "Click me!", callback_data: user.id.toString()}]
-            ]
-        }
-      }
-    );
-  }
-  await next();
-});
+bot.on(
+  "message:new_chat_members",
+  async (ctx: CaptchotContext, next: NextFunction) =>
+    await catchNewChatMember(ctx, next)
+);
 
-bot.on("callback_query:data", async (ctx, next) => {
-    console.log(ctx)
-    
-    await next()
-})
+bot.on(
+  "message",
+  async (ctx: CaptchotContext, next: NextFunction) =>
+    await checkAnswer(ctx, next)
+);
 
 bot.start();
-bot.catch((e) => console.log(e));
+
+process.on("uncaughtException", (error, origin) => {
+  console.log(error, origin);
+  process.exit(1);
+});
