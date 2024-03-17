@@ -1,0 +1,12 @@
+# rename this file via removing '.example' from filename
+
+BOT_TOKEN: qwerty # bot token from BotFather
+
+TIME_FOR_ANSWER: 60 # in seconds
+
+REPLIES:  # here you can add your language and appropriate phrases
+ EN: 
+  hello: "Hello, "
+  youHave: "You have "
+  solveOrBeBanned: " seconds to solve the problem otherwise you will be banned.\n"
+  writeAnswer: "Write an answer. What is "

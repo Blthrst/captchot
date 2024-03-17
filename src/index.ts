@@ -1,4 +1,4 @@
-import { Bot, Context, NextFunction, session } from "grammy";
+import { Bot, NextFunction, session } from "grammy";
 import { config } from "./config";
 
 import { SessionData, CaptchotContext } from "./types";
@@ -11,10 +11,6 @@ function initial(): SessionData {
 }
 
 bot.use(session({ initial }));
-
-bot.command("start", async (ctx) => {
-  await ctx.reply("test");
-});
 
 bot.on(
   "message:new_chat_members",
@@ -31,6 +27,11 @@ bot.on(
 bot.start();
 
 process.on("uncaughtException", (error, origin) => {
+  console.log(error, origin);
+  process.exit(1);
+});
+
+process.on("unhandledRejection", (error, origin) => {
   console.log(error, origin);
   process.exit(1);
 });
