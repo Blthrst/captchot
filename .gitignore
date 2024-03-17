@@ -1,3 +1,5 @@
 node_modules/
 src/config.yaml
 dist/
+
+yarn.lock

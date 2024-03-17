@@ -8,11 +8,10 @@
     "start": "tsc && node ./dist/index.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Blthrst",
   "license": "ISC",
   "dependencies": {
     "@types/node": "^20.11.28",
-    "better-sqlite3": "^9.4.3",
     "grammy": "^1.21.1",
     "nodemon": "^3.1.0",
     "random-js": "^2.1.0",
