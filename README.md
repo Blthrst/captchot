@@ -8,6 +8,8 @@ It uses a simple task that is randomly generated to screen out users.
 
 If a user fails to solve the task within a certain time, the bot bans that user.
 
+![example](captchot-example.png)
+
 Remember that in order for the bot to work in your Telegram group, it must have administrator rights.
 
 ## I want to use Catchot!
