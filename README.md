@@ -12,6 +12,8 @@ Remember that in order for the bot to work in your Telegram group, it must have 
 
 ## I want to use Catchot!
 
+Catchot can serve as the basis for your implementation of any captcha bot.
+
 To start using the bot, just clone this repository via:
 
     git clone https://github.com/Blthrst/captchot
@@ -28,7 +30,7 @@ Or:
 
 ---
 
-After that you can use scripts from `package.json` and enjoy Captchot
+After that you can use scripts from `package.json` and enjoy Captchot.
 
 ### Integrations:
 
