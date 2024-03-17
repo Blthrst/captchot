@@ -14,7 +14,7 @@ Remember that in order for the bot to work in your Telegram group, it must have 
 
 ## I want to use Captchot!
 
-Catchot can serve as the basis for your implementation of any captcha bot.
+Captchot can serve as the basis for your implementation of any captcha bot.
 
 To start using the bot, just clone this repository via:
 
